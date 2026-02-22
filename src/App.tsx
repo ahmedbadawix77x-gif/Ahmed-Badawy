@@ -11,12 +11,17 @@ const NotFound = lazy(() => import("./pages/NotFound"));
 
 const queryClient = new QueryClient();
 
-const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter basename={import.meta.env.BASE_URL}>
+const App = () => {
+  const basename = import.meta.env.BASE_URL.endsWith('/') 
+    ? import.meta.env.BASE_URL.slice(0, -1) 
+    : import.meta.env.BASE_URL;
+
+  return (
+    <QueryClientProvider client={queryClient}>
+      <TooltipProvider>
+        <Toaster />
+        <Sonner />
+        <BrowserRouter basename={basename}>
         <Suspense fallback={<div className="min-h-screen flex items-center justify-center bg-background text-foreground">Loading...</div>}>
           <Routes>
             <Route path="/" element={<Index />} />

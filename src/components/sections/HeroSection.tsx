@@ -1,5 +1,5 @@
 import { m, type Variants } from "framer-motion";
-import { ArrowDown, Github, Linkedin, Twitter, Sparkles } from "lucide-react";
+import { ArrowDown, Github, Linkedin, Twitter, Sparkles, Mail } from "lucide-react";
 import { personalInfo } from "@/data/portfolio";
 
 const HeroSection = () => {
@@ -122,6 +122,7 @@ const HeroSection = () => {
           {[
             { icon: Github, href: personalInfo.social.github, label: "GitHub" },
             { icon: Linkedin, href: personalInfo.social.linkedin, label: "LinkedIn" },
+            { icon: Mail, href: `mailto:${personalInfo.email}`, label: "Email" },
           ].map(({ icon: Icon, href, label }) => (
             <m.a
               key={label}
